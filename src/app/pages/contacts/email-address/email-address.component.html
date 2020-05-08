@@ -1,0 +1,50 @@
+<form [formGroup]="formGroup">
+    <div class="form-group row mb-4">
+<!--        <label for="address" class="col-form-label col-lg-2">address / tags / primary?</label>-->
+        <div class="col-lg-5">
+            <input id="address"
+                   type="text"
+                   class="form-control"
+                   formControlName="address"
+                   [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
+                   placeholder="Enter address...">
+            <div *ngIf="f.address.errors" class="invalid-feedback">
+                <div *ngIf="f.address.errors.required">Address is required</div>
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <ng-select [items]="tags"
+                       [ngClass]="{ 'is-invalid': submitted && f.tags.errors }"
+                       id="tags"
+                       name="tags"
+                       bindLabel="value"
+                       bindValue="key"
+                       formControlName="tags"
+                       multiple="true"
+                       class="full-width"
+                       appendTo="body"
+                       placeholder="Tags"
+                       required>
+                <div *ngIf="f.tags.errors" class="invalid-feedback">
+                    <div *ngIf="f.tags.errors.required">Tags is required</div>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox"
+                           class="custom-control-input"
+                           id="primary"
+                           formControlName="primary"
+                           [ngClass]="{ 'is-invalid': submitted && f.primary.errors }"
+                    >
+                    <label class="custom-control-label" for="primary">Primary?</label>
+                </div>
+                <div *ngIf="f.primary.errors" class="invalid-feedback">
+                    <div *ngIf="f.primary.errors.required">Primary is required</div>
+                </div>
+            </ng-select>
+<!--            <div class="col-lg-2">-->
+<!--                -->
+<!--            </div>-->
+        </div>
+    </div>
+
+</form>

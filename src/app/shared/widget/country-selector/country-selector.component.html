@@ -1,0 +1,11 @@
+<div class="resp-container">
+	<ng-select [items]="countries"
+			   id="source"
+			   autofocus
+			   class="full-width"
+			   appendTo="body"
+			   (ngModelChange)="onSelected($event)"
+			   placeholder="Choose country"
+			   required>
+	</ng-select>
+</div>

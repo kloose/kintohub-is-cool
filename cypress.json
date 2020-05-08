@@ -1,0 +1,9 @@
+{
+  "projectId": "n6jtof",
+  "env": {
+    "AUTH_ENDPOINT": "https://dev-key.masonprivatbank.cloud/auth/realms/mpl-dev-1/protocol/openid-connect/token",
+    "AUTH_USERNAME": "kloose@gmail.com",
+    "AUTH_PASSWORD": "password",
+    "AUTH_CLIENT_ID": "nomad-admin-ui"
+  }
+}

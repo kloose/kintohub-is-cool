@@ -1,0 +1,11 @@
+<div class="resp-container">
+	<ng-select [items]="options"
+			   id="option"
+			   autofocus
+			   class="full-width"
+			   appendTo="body"
+			   (ngModelChange)="onSelected($event)"
+			   placeholder="Enter Option Source..."
+			   required>
+	</ng-select>
+</div>

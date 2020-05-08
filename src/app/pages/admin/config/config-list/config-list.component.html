@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <app-page-title title="Task List" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Configuration</h4>
+          <p class="card-sub-title">Application Configuration</p>
+          <div class="row mb-md-2">
+            <div class="col-sm-12 col-md-6">
+              <div class="create">
+                <label class="d-inline-flex align-items-center">
+                  <button id="create"
+                          routerLink="/admin/config"
+                          type="button"
+                          class="btn-success">Create Config</button>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-md-2">
+            <div class="col-md-12 col-md-12">
+              <div class="table-responsive">
+                <ngx-datatable
+                  class="material"
+                  [columnMode]="ColumnMode.force"
+                  [headerHeight]="50"
+                  [footerHeight]="50"
+                  rowHeight="auto"
+                  [limit]="10"
+                  [rows]="data">
+                  <ngx-datatable-column name="key"></ngx-datatable-column>
+                  <ngx-datatable-column name="value"></ngx-datatable-column>
+                  <ngx-datatable-column name="defaultValue"></ngx-datatable-column>
+                  <ngx-datatable-column name="modelType"></ngx-datatable-column>
+                  <ngx-datatable-column name="actions" >
+                    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex"let-row="row">
+                      <span>
+                        <button class="btn btn-dark btn-sm"
+                                (click)="edit(row)">Edit</button>
+                      </span>
+                    </ng-template>
+                  </ngx-datatable-column>
+                </ngx-datatable>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

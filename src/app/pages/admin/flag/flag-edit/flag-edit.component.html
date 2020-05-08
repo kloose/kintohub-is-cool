@@ -1,0 +1,81 @@
+<div class="account-pages mt-5 mb-5">
+<div class="container-fluid">
+  <app-page-title title="Create Flag" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body" >
+          <h4 class="card-title mb-4">Create New Flag</h4>
+          <form class="outer-repeater"
+                *ngIf="flagForm"
+                [formGroup]="flagForm"
+                (ngSubmit)="save()" >
+            <ngb-alert type="danger" *ngIf="error" [dismissible]="true">{{ error }}</ngb-alert>
+            <div data-repeater-list="outer-group" class="outer">
+              <div data-repeater-item class="outer">
+                <div class="form-group row mb-4">
+                  <label for="key" class="col-form-label col-lg-2">Key</label>
+                  <div class="col-lg-10">
+                    <input id="key"
+                           name="key"
+                           type="text"
+                           class="form-control"
+                           formControlName="key"
+                           [ngClass]="{ 'is-invalid': submitted && f.key.errors }"
+                           placeholder="Enter Flag Key...">
+                  </div>
+                  <div *ngIf="submitted && flagForm.controls.key.errors" class="invalid-feedback">
+                    <div *ngIf="f.key.errors.required">Key is required</div>
+                  </div>
+                </div>
+                <div class="form-group row mb-4">
+                  <label for="category" class="col-form-label col-lg-2">Category</label>
+                  <div class="col-lg-10">
+                    <input id="category"
+                           name="category"
+                           type="text"
+                           class="form-control"
+                           formControlName="category"
+                           [ngClass]="{ 'is-invalid': submitted && f.category.errors }"
+                           placeholder="Enter Category Value...">
+                  </div>
+                  <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
+                    <div *ngIf="f.category.errors.required">Value is required</div>
+                  </div>
+                </div>
+
+                <div class="form-group row mb-4">
+                  <label for="enabled" class="col-form-label col-lg-2">Enabled</label>
+                  <div class="col-lg-10">
+
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox"
+                             class="custom-control-input"
+                             id="enabled"
+                             formControlName="enabled"
+                             [ngClass]="{ 'is-invalid': submitted && f.enabled.errors }"
+                      >
+                      <label class="custom-control-label" for="enabled">Is it enabled?</label>
+                    </div>
+                  </div>
+                  <div *ngIf="submitted && f.enabled.errors" class="invalid-feedback">
+                    <div *ngIf="f.enabled.errors.required">enabled is required</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row justify-content-end">
+              <div class="col-lg-10">
+                <button  type="button" class="btn btn-warning" (click)="cancel()">Cancel</button>
+                <button *ngIf="id" type="submit" class="btn btn-primary">Update Flag</button>
+                <button *ngIf="!id" type="submit" class="btn btn-primary">Create Flag</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

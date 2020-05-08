@@ -1,0 +1,9 @@
+{
+  "projectId": "n6jtof",
+  "env": {
+    "AUTH_ENDPOINT": "http://localhost:9099/auth/realms/ibaas-test/protocol/openid-connect/token",
+    "AUTH_USERNAME": "kloose@gmail.com",
+    "AUTH_PASSWORD": "password",
+    "AUTH_CLIENT_ID": "ibaas-admin"
+  }
+}

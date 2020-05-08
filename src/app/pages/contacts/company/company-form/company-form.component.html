@@ -1,0 +1,48 @@
+
+<form class="outer-repeater"
+      *ngIf="companyForm"
+      [formGroup]="companyForm">
+  <ngb-alert type="danger" *ngIf="error" [dismissible]="true">{{ error }}</ngb-alert>
+  <div data-repeater-list="outer-group" class="outer">
+    <div data-repeater-item class="outer">
+
+      <div class="form-group row mb-4">
+        <label for="name" class="col-form-label col-lg-2">Name</label>
+        <div class="col-lg-10">
+          <input id="name"
+                 name="name"
+                 type="text"
+                 class="form-control"
+                 formControlName="name"
+                 [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+                 placeholder="Enter Company Name...">
+        </div>
+        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+          <div *ngIf="f.name.errors.required">Name is required</div>
+        </div>
+      </div>
+
+      <div class="form-group row mb-4">
+          <label for="country" class="col-form-label col-lg-2">Country</label>
+          <div class="col-lg-10">
+            <ng-select [items]="countries"
+                       [ngClass]="{ 'is-invalid': submitted && f.country.errors }"
+                       id="country"
+                       name="country"
+                       bindLabel="name"
+                       bindValue="code"
+                       formControlName="country"
+                       class="full-width"
+                       appendTo="body"
+                       required>
+            </ng-select>
+          </div>
+          <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+            <div *ngIf="f.country.errors.required">Country is required</div>
+          </div>
+      </div>
+
+    </div>
+  </div>
+
+</form>

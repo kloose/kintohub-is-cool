@@ -1,0 +1,106 @@
+<div class="account-pages mt-5 mb-5">
+<div class="container-fluid">
+  <app-page-title title="Create Config" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body" >
+          <h4 class="card-title mb-4">Create New Config</h4>
+          <form class="outer-repeater"
+                *ngIf="configForm"
+                [formGroup]="configForm"
+                (ngSubmit)="save()" >
+            <ngb-alert type="danger" *ngIf="error" [dismissible]="true">{{ error }}</ngb-alert>
+            <div data-repeater-list="outer-group" class="outer">
+              <div data-repeater-item class="outer">
+                <div class="form-group row mb-4">
+                  <label for="key" class="col-form-label col-lg-2">Key</label>
+                  <div class="col-lg-10">
+                    <input id="key"
+                           name="key"
+                           type="text"
+                           class="form-control"
+                           formControlName="key"
+                           [ngClass]="{ 'is-invalid': submitted && f.key.errors }"
+                           placeholder="Enter Config Key...">
+                  </div>
+                  <div *ngIf="submitted && configForm.controls.key.errors" class="invalid-feedback">
+                    <div *ngIf="f.key.errors.required">Key is required</div>
+                  </div>
+                </div>
+                
+                <div class="form-group row mb-4">
+                  <label for="value" class="col-form-label col-lg-2">Value</label>
+                  <div class="col-lg-10">
+                    <input id="value"
+                           name="value"
+                           type="text"
+                           class="form-control"
+                           formControlName="value"
+                           [ngClass]="{ 'is-invalid': submitted && f.value.errors }"
+                           placeholder="Enter Config Value...">
+                  </div>
+                  <div *ngIf="submitted && f.value.errors" class="invalid-feedback">
+                    <div *ngIf="f.value.errors.required">Value is required</div>
+                  </div>
+                </div>
+
+                <div class="form-group row mb-4">
+                  <label for="defaultValue" class="col-form-label col-lg-2">DefaultValue</label>
+                  <div class="col-lg-10">
+
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox"
+                             class="custom-control-input"
+                             id="defaultValue"
+                             formControlName="defaultValue"
+                             [ngClass]="{ 'is-invalid': submitted && f.defaultValue.errors }"
+                      >
+                      <label class="custom-control-label" for="defaultValue">Is it a default value?</label>
+                    </div>
+                  </div>
+                  <div *ngIf="submitted && f.defaultValue.errors" class="invalid-feedback">
+                    <div *ngIf="f.defaultValue.errors.required">DefaultValue is required</div>
+                  </div>
+                </div>
+
+                <div class="form-group row mb-4">
+                  <label for="modelType" class="col-form-label col-lg-2">ModelType</label>
+                  <div class="col-lg-10">
+                    <ng-select [items]="configService.sources"
+                               id="modelType"
+                               autofocus
+                               formControlName="modelType"
+                               class="full-width"
+                               appendTo="body"
+                               [ngClass]="{ 'is-invalid': submitted && f.modelType.errors }"
+                               placeholder="Enter Config ModelType..."
+                               required>
+                    </ng-select>
+                  </div>
+                  <div *ngIf="submitted && f.modelType.errors" class="invalid-feedback">
+                    <div *ngIf="f.modelType.errors.required">ModelType is required</div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+            <div class="row justify-content-end">
+              <div class="col-lg-10">
+                <button  type="button" class="btn btn-warning" (click)="cancel()">Cancel</button>
+                <button *ngIf="id"  id="update" type="submit" class="btn btn-primary">Update Config</button>
+                <button *ngIf="!id" id="create" type="submit" class="btn btn-primary">Create Config</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end row -->
+
+</div> <!-- container-fluid -->
+
+</div>
