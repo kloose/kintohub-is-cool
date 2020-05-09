@@ -3,7 +3,7 @@ COPY package.json package-lock.json ./
 RUN npm ci && mkdir -p /kinto/app && mv ./node_modules ./kinto/app
 WORKDIR /kinto/app
 COPY . .
-RUN npm run ng build -- --prod --output-path=dist
+RUN npm run build:prod
 
 FROM nginx:1.14.1-alpine
 COPY nginx/default.conf /etc/nginx/conf.d/
