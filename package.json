@@ -41,7 +41,7 @@
     "@sweetalert2/ngx-sweetalert2": "^8.1.0",
     "@swimlane/ngx-datatable": "^16.0.3",
     "@types/chartist": "^0.9.47",
-    "apexcharts": "^3.18.1",
+    "apexcharts": "^3.24.0",
     "bootstrap": "^4.4.1",
     "bpmn-js": "^6.5.1",
     "bpmn-js-properties-panel": "^0.33.2",
